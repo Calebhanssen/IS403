@@ -14,59 +14,50 @@
 </head>
 <body>
   <script>
-
-    var sFirstName = (prompt("First name?"))
-    var sLastName = (prompt("Last name?"))
-    var iAge = parseInt(prompt("Age?"))
-    var iGuess
-
-    while (iGuess == iAge)
-    {
-      if (iAge < 18)
-      alert("You must be at least 18 to play");
-      {
-        break;
-      }
-
-      var iGuess = Math.floor( Math.random() * 20) + 1;
-      parseInt(prompt("What is your guess?"));
-
-      if (iAge == iGuess)
-      alert("You guessed it! it! it took " + iGuesses + "of guesses");
-
-      else if (iAge > iRandom)
-      alert("Too high");
-
-      else if (iAge < iRandom)
-      alert("Too low");
-
-    }
-   
-
-
-
-
-
-
-    // while ((iAge == iGuess))
-    // {
-    //   if (iAge == iGuess)
-    //   alert("You guessed it! it! it took " + iGuesses + "of guesses")
-    //   else if (iAge > iRandom)
-    //   alert("Too high");
-
-    //   else if (iAge < iRandom)
-    //   alert("Too low");
-    // }
-
  
-    
-    
+        // Prompt for user information
+        var firstName = prompt("Enter your First Name:");
+        var lastName = prompt("Enter your Last Name:");
+        var age = parseInt(prompt("Enter your Age:"));
 
+        // Check if the user is under 18 and quit if so
+        if (age < 18) {
+            alert("You must be at least 18 to play.");
+        } else {
+            var playAgain = 'y';
+            var totalGuesses = 0;
 
-    
+            while (playAgain === 'y') {
+                // Generate a random number between 1 and 20 
+                var randomNumber = Math.floor(Math.random() * 20) + 1;
+                var numberOfGuesses = 0;
+
+                while (true) {
+                    var userGuess = parseInt(prompt("Guess a number between 1 and 20:"));
+                    numberOfGuesses++;
+
+                    if (userGuess < randomNumber) {
+                        alert("Too low");
+                    } else if (userGuess > randomNumber) {
+                        alert("Too high");
+                    } else {
+                        alert("You guessed it! It took " + numberOfGuesses + " guesses");
+                        break;
+                    }
+                }
+                //option to play again
+                playAgain = prompt("Do you want to play again? (y/n)").toLowerCase();
+            }
+        }
 
 
   </script>
 </body>
 </html>
+
+
+
+
+
+
+ 
