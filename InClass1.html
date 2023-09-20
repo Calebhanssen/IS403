@@ -1,0 +1,61 @@
+<!--
+  Caleb Hanssen 
+  Section 1 Group 9
+  Class work #1 - Age to play game
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    var sFirstName = (prompt("First name?"))
+    var sLastName = (prompt("Last name?"))
+    var iAge = parseInt(prompt("Age?"))
+    var iGuess
+
+    while (iGuess == iAge)
+    {
+      if (iAge < 18)
+      alert("You must be at least 18 to play");
+      {
+        break;
+      }
+
+      var iGuess = Math.floor( Math.random() * 20) + 1;
+      parseInt(prompt("What is your guess?"));
+
+    }
+   
+
+    var iGuess = Math.floor( Math.random() * 20) + 1;
+     parseInt(prompt("What is your guess?"));
+
+    // while ((iAge == iGuess))
+    // {
+    //   if (iAge == iGuess)
+    //   alert("You guessed it! it! it took " + iGuesses + "of guesses")
+    //   else if (iAge > iRandom)
+    //   alert("Too high");
+
+    //   else if (iAge < iRandom)
+    //   alert("Too low");
+    // }
+
+ 
+    
+    
+
+
+    
+
+
+  </script>
+</body>
+</html>
