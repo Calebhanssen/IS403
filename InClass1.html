@@ -31,11 +31,22 @@
       var iGuess = Math.floor( Math.random() * 20) + 1;
       parseInt(prompt("What is your guess?"));
 
+      if (iAge == iGuess)
+      alert("You guessed it! it! it took " + iGuesses + "of guesses");
+
+      else if (iAge > iRandom)
+      alert("Too high");
+
+      else if (iAge < iRandom)
+      alert("Too low");
+
     }
    
 
-    var iGuess = Math.floor( Math.random() * 20) + 1;
-     parseInt(prompt("What is your guess?"));
+
+
+
+
 
     // while ((iAge == iGuess))
     // {
