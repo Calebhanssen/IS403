@@ -1,0 +1,34 @@
+<!--
+    Caleb Hanssen
+    Section 1
+    Homework #3 (Creating 2 random variables to see the output of the game)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Generate Team Score
+    var myScore = Math.floor(Math.random() * 101);
+    var opponentScore = Math.floor(Math.random() * 101);
+
+    // Output Structure
+    var output = ("BYU " + myScore + "\n" + "Gonzaga " + opponentScore)
+
+    // Display Full Result
+    if (myScore > opponentScore)
+      alert(output + "\n" + "\n" + "BYU wins")
+
+    else if (myScore < opponentScore)
+      alert(output + "\n" + "\n" + "Gonzaga wins")
+
+    else
+      alert(output + "\n" + "\n" + "Tie game")
+  </script>
+</body>
+</html>
