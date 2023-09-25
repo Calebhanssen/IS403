@@ -16,24 +16,24 @@
   <script>
  
         // Prompt for user information
-        var firstName = prompt("Enter your First Name:");
-        var lastName = prompt("Enter your Last Name:");
-        var age = parseInt(prompt("Enter your Age:"));
+        let firstName = prompt("Enter your First Name:");
+        let lastName = prompt("Enter your Last Name:");
+        let age = parseInt(prompt("Enter your Age:"));
 
         // Check if the user is under 18 and quit if so
         if (age < 18) {
             alert("You must be at least 18 to play.");
         } else {
-            var playAgain = 'y';
-            var totalGuesses = 0;
+            let playAgain = 'y';
+            let totalGuesses = 0;
 
             while (playAgain === 'y') {
                 // Generate a random number between 1 and 20 
-                var randomNumber = Math.floor(Math.random() * 20) + 1;
-                var numberOfGuesses = 0;
+                let randomNumber = Math.floor(Math.random() * 20) + 1;
+                let numberOfGuesses = 0;
 
                 while (true) {
-                    var userGuess = parseInt(prompt("Guess a number between 1 and 20:"));
+                    let userGuess = parseInt(prompt("Guess a number between 1 and 20:"));
                     numberOfGuesses++;
 
                     if (userGuess < randomNumber) {
