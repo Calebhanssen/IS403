@@ -17,12 +17,12 @@
 <body>
   <script>
     // BMI Calculation
-    var iHeightFeet = parseInt(prompt("Enter heigh in feet?"))
-    var iHeightInch = parseInt(prompt("And how many inches?"))
-    var iWeight = parseInt(prompt("What is your weight in pounds?"))
+    let iHeightFeet = parseInt(prompt("Enter heigh in feet?"))
+    let iHeightInch = parseInt(prompt("And how many inches?"))
+    let iWeight = parseInt(prompt("What is your weight in pounds?"))
 
-    var iHeight = (iHeightFeet * 12) + iHeightInch
-    var BMI = (iWeight / iHeight / iHeight) * 703
+    let iHeight = (iHeightFeet * 12) + iHeightInch
+    let BMI = (iWeight / iHeight / iHeight) * 703
 
     // Weight Result
     if (BMI < 18.5)
@@ -38,10 +38,10 @@
       alert("Obesity")
 
     // Tips For Better Health
-    var tip1 = ("Maintain a Healthy Weight")
-    var tip2 = ("Increase Physical Activity")
-    var tip3 = ("Eat a Heart-Healthy Diet")
-    var tip4 = ("Know and Control Your Heart Healthy Numbers")
+    let tip1 = ("Maintain a Healthy Weight")
+    let tip2 = ("Increase Physical Activity")
+    let tip3 = ("Eat a Heart-Healthy Diet")
+    let tip4 = ("Know and Control Your Heart Healthy Numbers")
 
     alert(tip1 + "\n" + tip2 + "\n" + tip3 + "\n" + tip4)
   </script>
