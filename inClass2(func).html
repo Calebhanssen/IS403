@@ -1,0 +1,26 @@
+<!-- Caleb 
+Section 1
+Description: -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // write a function that recieves 2 parms and returns random # inclusive
+    function myRndInc(iStart, iEnd)
+    {
+      return (Math.floor(Math.random() * (iEnd-iStart + 1)) + iStart);
+    
+    }
+
+    let iNum = parseInt(prompt("Enter the start:"))
+    let iOtherNum = parseInt(prompt("Enter the end:"))
+    console.log(myRndInc(iNum, iOtherNum));
+  </script>
+</body>
+</html>

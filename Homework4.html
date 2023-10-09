@@ -1,0 +1,66 @@
+<!-- 
+    Caleb Hanssen 
+    Section 1
+    Homework #4 (FOR loop for season wins in soccer)
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Fourth JavaScript</title>
+</head>
+
+<body>
+  <script>
+    // Ask for team name and season games
+    let myTeamName = prompt("What is your team name?")
+    let teamGames = parseInt(prompt("How many games are in your season?"))
+    let iCount;
+    let opponentName;
+    let myWins = 0;
+    let myLosses = 0;
+
+
+    // For loop 
+    if (teamGames > 0) {
+      for (iCount = 0; iCount < teamGames; iCount = iCount + 1) {
+        opponentName = prompt("Enter your opponents name")
+
+        // Generate random number between 10
+        let myScore = Math.floor(Math.random() * 11);
+        let opponentScore = Math.floor(Math.random() * 11);
+
+        while (myScore === opponentScore) {
+          myScore = Math.floor(Math.random() * 11);
+          opponentScore = Math.floor(Math.random() * 11);
+        }
+
+        // Keep track of wins
+        if (myScore > opponentScore)
+          myWins++
+        else if (myScore < opponentScore)
+          myLosses++
+
+
+      }
+    }
+
+    let winningPercentage = (myWins / teamGames);
+    let myRecord = (myWins + "-" + myLosses);
+    
+
+    // text based on winning percentage
+    if (winningPercentage >= .75) {
+      alert(myRecord + '\n' + "NCAA Women's Soccer Tournament")
+    } else if (winningPercentage >= .50 && winningPercentage < .75) {
+      alert(myRecord + '\n' + "Alternate Candidate for Covid")
+    } else {
+      alert(myRecord + '\n' + "See you next year")
+    }
+  </script>
+</body>
+
+</html>
