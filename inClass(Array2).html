@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <button onclick="show();">Click Me</button>
+    <br>
+    <p id="output"></p>
+    <script>
+    function show()
+    {
+      let aNames = [];
+
+      let sMenu = "1 - Add to end\n2 - Remove from end\n3 - Add to beginning\n4 - Remove from beginning\n5 - Exit";
+      let iInput = parseInt(prompt(sMenu));
+      let sName;
+
+      while (iInput != 5)
+      {
+        sName = prompt("Enter a name");
+
+        if (iInput == 1)
+        {
+          aNames.push(sName)
+        }
+        else if (iInput == 2)
+        {
+          aNames.pop(sName);
+        }
+        else if (iInput == 3)
+        {
+          aNames.unshift(sName);
+        }
+        else if (iInput == 4)
+        {
+          aNames.shift();
+        }
+        else
+        {
+          alert("Please enter a number 1-5");
+        }
+
+        iInput = parseInt(prompt(sMenu));
+      }
+    }
+    </script>
+ </body>
+</html>
