@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Burgers</title>
+</head>
+
+<body>
+    <h1><u>TOTAL BURGERS</u></h1>
+    <button type="button" onclick="showBreakdowns()">Open Store</button>
+    <p id="myOutput"></p>
+
+    <script>
+        function showBreakdowns() {
+            let asCustomers = [
+                "Jefe", "El Guapo", "Lucky Day",
+                "Ned Nederlander", "Dusty Bottoms", "Harry Flugleman", "Carmen", "Invisible Swordsman", "Singing Bush"
+            ];
+
+            let aiBurgerCount = []; // An array to store the total burgers ordered by each customer
+
+            for (let iCount = 0; iCount < asCustomers.length; iCount++) {
+                aiBurgerCount[iCount] = Math.floor(Math.random() * 21 + 1) * 100;
+            }
+
+            // Sort customers and their total orders
+            for (let iOuter = 0; iOuter < aiBurgerCount.length - 1; iOuter++) {
+                for (let iInner = iOuter + 1; iInner < aiBurgerCount.length; iInner++) {
+                    if (aiBurgerCount[iOuter] < aiBurgerCount[iInner]) {
+                        let tempCustomer = asCustomers[iInner];
+                        let tempBurgerCount = aiBurgerCount[iInner];
+
+                        asCustomers[iInner] = asCustomers[iOuter];
+                        aiBurgerCount[iInner] = aiBurgerCount[iOuter];
+
+                        asCustomers[iOuter] = tempCustomer;
+                        aiBurgerCount[iOuter] = tempBurgerCount;
+                    }
+                }
+            }
+
+            let sOutput = ""; // Initialize the output string
+
+            for (let iCount = 0; iCount < asCustomers.length; iCount++) {
+                let textColor = ""; // Variable to store text color
+
+                if (aiBurgerCount[iCount] >= 1100) {
+                    textColor = "green";
+                } else if (aiBurgerCount[iCount] >= 1000) {
+                    textColor = "blue";
+                } else if (aiBurgerCount[iCount] >= 900) {
+                    textColor = "DarkGoldenRod";
+                } else {
+                    textColor = "red";
+                }
+
+                sOutput += '<p style="color: ' + textColor + ';">' + asCustomers[iCount] + ' - ' + aiBurgerCount[iCount] + '</p>';
+            }
+
+            document.getElementById("myOutput").innerHTML = sOutput;
+        }
+    </script>
+</body>
+
+</html>
+

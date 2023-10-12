@@ -46,6 +46,20 @@
 
         iInput = parseInt(prompt(sMenu));
       }
+      
+      // keeps the list
+      for (let iCount = 0; iCount < asNames.length; iCount++)
+      {
+        console.log(asNames[iCount]);
+      
+      }
+
+      // gets rid of the list
+      while (asNames.length > 0)
+      {
+        console.log(asNames[0]);
+        asNames.shift()
+      }
     }
     </script>
  </body>
