@@ -1,69 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Total Burgers</title>
+  <title>Midterm 1</title>
+  <script>
+
+      let names = [];
+      let values = [];
+      let messages = [];
+      let goldValue = 37500;
+      let silverValue = 22500;
+      let bronzeValue = 15000;
+
+    function calculateMedalValue(gold, silver, bronze)
+    {
+      return gold * goldValue + silver * silverValue + bronze * bronzeValue;
+    }
+
+    function assignMessage() 
+    {
+      if (value >= 500000) {
+        message = "Become a sports commentator";
+      } else if (value >= 250000) {
+        message = "You are rich and famous";
+      } else {
+        message = "Great job! Keep training!";
+      }
+      return message;
+    }
+
+    function goForTheGold() {
+      let numAthletes = parseInt(prompt("How many athletes?"));
+      if (numAthletes === 0) {
+        return; // Do not display results for 0 athletes
+      }
+
+   
+
+      for (let iCount = 0; iCount < numAthletes; iCount++) {
+        let athleteName = prompt(`Enter Athlete ${iCount + 1}'s name:`);
+        let goldMedals = parseInt(prompt(`Enter ${athleteName}'s number of Gold Medals:`));
+        let silverMedals = parseInt(prompt(`Enter ${athleteName}'s number of Silver Medals:`));
+        let bronzeMedals = parseInt(prompt(`Enter ${athleteName}'s number of Bronze Medals:`));
+
+        names.push(athleteName);
+
+        let monetaryValue = calculateMedalValue(goldMedals, silverMedals, bronzeMedals);
+        values.push(monetaryValue);
+
+        let message = assignMessage(monetaryValue);
+        messages.push(message);
+      }
+
+      // Sort the arrays by monetary value (values array)
+      let sortedIndices = Array.from(Array(numAthletes).keys()).sort((a, b) => values[b] - values[a]);
+
+      let outputElement = document.getElementById("olympicOutput");
+      outputElement.innerHTML = "";
+
+      for (let index of sortedIndices) {
+        let line = `${names[index]}, $${values[index]}, ${messages[index]}`;
+        outputElement.innerHTML += line + "<br>";
+      }
+    }
+  </script>
 </head>
 
 <body>
-    <h1><u>TOTAL BURGERS</u></h1>
-    <button type="button" onclick="showBreakdowns()">Open Store</button>
-    <p id="myOutput"></p>
-
-    <script>
-        function showBreakdowns() {
-            let asCustomers = [
-                "Jefe", "El Guapo", "Lucky Day",
-                "Ned Nederlander", "Dusty Bottoms", "Harry Flugleman", "Carmen", "Invisible Swordsman", "Singing Bush"
-            ];
-
-            let aiBurgerCount = []; // An array to store the total burgers ordered by each customer
-
-            for (let iCount = 0; iCount < asCustomers.length; iCount++) {
-                aiBurgerCount[iCount] = Math.floor(Math.random() * 21 + 1) * 100;
-            }
-
-            // Sort customers and their total orders
-            for (let iOuter = 0; iOuter < aiBurgerCount.length - 1; iOuter++) {
-                for (let iInner = iOuter + 1; iInner < aiBurgerCount.length; iInner++) {
-                    if (aiBurgerCount[iOuter] < aiBurgerCount[iInner]) {
-                        let tempCustomer = asCustomers[iInner];
-                        let tempBurgerCount = aiBurgerCount[iInner];
-
-                        asCustomers[iInner] = asCustomers[iOuter];
-                        aiBurgerCount[iInner] = aiBurgerCount[iOuter];
-
-                        asCustomers[iOuter] = tempCustomer;
-                        aiBurgerCount[iOuter] = tempBurgerCount;
-                    }
-                }
-            }
-
-            let sOutput = ""; // Initialize the output string
-
-            for (let iCount = 0; iCount < asCustomers.length; iCount++) {
-                let textColor = ""; // Variable to store text color
-
-                if (aiBurgerCount[iCount] >= 1100) {
-                    textColor = "green";
-                } else if (aiBurgerCount[iCount] >= 1000) {
-                    textColor = "blue";
-                } else if (aiBurgerCount[iCount] >= 900) {
-                    textColor = "DarkGoldenRod";
-                } else {
-                    textColor = "red";
-                }
-
-                sOutput += '<p style="color: ' + textColor + ';">' + asCustomers[iCount] + ' - ' + aiBurgerCount[iCount] + '</p>';
-            }
-
-            document.getElementById("myOutput").innerHTML = sOutput;
-        }
-    </script>
+  <button type="button" onclick="goForTheGold()">Go</button>
+  <p id="olympicOutput"></p>
 </body>
 
 </html>
-

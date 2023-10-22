@@ -1,0 +1,152 @@
+<!-- Caleb Hanssen 
+  Section: 1 
+  Description: 
+
+Create an HTML file that will include JavaScript.
+
+The HTML file should have a button and a p tag.
+
+When you click the button a JavaScript function called “play” should be executed.
+
+The play function will use the following arrays:
+asPokemon1 = ["Pikachu", "Eevee", "Snorlax"];
+asPokemon2 = ["Garchomp", "Lucario", "Ditto"];
+
+The purpose of the program is to do a Pokemon battle between teams. The game will start by prompting the user “Do you want to play?”. As long as the user enters the FIRST character as a Y then the game will be played. Make sure you handle lower and upper case character inputs. The user could type “yes”, “Yes”, “Y”, “You bet”, “Yabba dabba do”, etc. and that means they want to play.
+
+The game will start with the first player from each team battling the other character with the program generating a random number between 0 and 20 for each character. The numbers are compared to see who has a higher number which means that character wins. 
+
+For each game, write both teams and their scores to the console window.
+
+Each character can continue to battle as long as they don’t have 3 losses. Once they have 3 losses, the next character on the team jumps into the battle and continues to fight the other team’s character.
+
+For example:
+Pikachu 10 – Garchomp 5
+Pikachu 11 – Garchomp 3
+Pikachu 10 – Garchomp 15
+Pikachu 9 – Garchomp 4
+Pikachu 0 – Lucario 4
+Eevee 12 – Lucario 15
+Eevee 1 – Lucario 2
+Eevee 0 – Lucario 4
+Snowlax 8 – Lucario 2
+Etc
+
+You will need to keep track of the number of losses for each character and once they have 3 losses, move on to the next character in the team.
+
+When one team runs out of characters the game is over. Keep track of which team has the most number of wins and ask the user if they want to play again just like you did at the beginning of the game.
+
+When the user wants to stop playing and as long as they have played at least 1 round of games, write to the P tag the team number, the member names, and how many times they won. If there is a tie, display “It was a tie!”.
+Team 2 - Garchomp, Lucario, Ditto, Charmander, Gardevoir won 4 times
+
+Make sure you use appropriate comments.
+
+Paste in your HTML code in the text box.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+ <!-- button to begin games & ptag that grabs uses the DOM to show the sOutput -->
+  <button type="button" onclick="play()">Play</button><br>
+  <p id="sOutputGames"></p>
+
+<script>
+  // array for teams and variables
+  asPokemon1 = ["Pikachu", "Eevee", "Snorlax"];
+  asPokemon2 = ["Garchomp", "Lucario", "Ditto"];
+  let team1Wins = 0;
+  let team2Wins = 0;
+  let team1Losses = [0, 0, 0]; //array to keep track of losses for each character in team 1
+  let team2Losses = [0, 0, 0]; //array to keep track of losses for each character in team 2
+  let continuePlaying = false;
+  let sOutputGames = "";
+
+
+  function play() {
+
+    // while loop to determine if they want to play or not ()
+    while (continuePlaying == false) 
+    {
+
+      let playAgain = prompt("Do you want to play y/n?").toLowerCase(); //As long as the user enters the FIRST character as a Y then the game will be played
+
+      if(playAgain == 'y') {
+        continuePlaying = true; // if they dont want to play again end the game
+      }
+
+        // for loop that keeps track of losses 
+        for (let iCount = 0; iCount < 3; iCount++) {
+          let team1Character = asPokemon1[iCount];
+          let team2Character = asPokemon2[iCount];
+
+          // keep track of the number of losses for each character and once they have 3 losses, move on to the next character in the team
+          while (team1Losses[iCount] < 3 && team2Losses[iCount] < 3)
+          {
+            let team1Score = Math.floor(Math.random() * 21);
+            let team2Score = Math.floor(Math.random() * 21);
+          
+            console.log(team1Character + ' ' + team1Score + ' ' + team2Character + ' ' + team2Score);
+
+            // keeps track of the team wins and moves through the score array
+            if (team1Score > team2Score)
+            {
+              team1Wins++;
+            }
+            else {
+              team2Wins++;
+            }
+
+            if (team1Score > team2Score)
+            {
+              team2Losses[iCount]++;
+            }
+            else 
+            {
+              team1Losses[iCount]++;
+            }
+            
+          }
+
+        }
+    
+    }
+
+    // Determine the winning team and output according to the directions. 
+    if (team1Wins > team2Wins) 
+    {
+      sOutputGames = "Team 1 - " + asPokemon1[0] + ", " + asPokemon1[1] + ", "  + asPokemon1[2] + " won " + team1Wins + " times";
+    }
+    else if (team1Wins < team2Wins)
+    {
+      sOutputGames = "Team 2 - " + asPokemon2[0] + ", " + asPokemon2[1] + ", "  + asPokemon2[2] + " won " + team2Wins + " times";
+    }
+    else 
+    {
+      sOutputGames = "It was a tie!";
+    }
+
+    // this uses the DOM and finds the id sOutputgames to paste it on the innerhtml
+    document.getElementById("sOutputGames").innerHTML = sOutputGames;
+  }
+
+
+
+</script>
+</body>
+</html>
+
+<!-- Do you want to play? y... 
+position 1 vs 1 with random number between 0-20
+keep track of both teams scores to the console window
+players can continue to battle while they dont have 3 losses
+after 3 losses next position in the array battles
+when a team runs out of characters output the winner
+prompt do you want to play again?
+-->
