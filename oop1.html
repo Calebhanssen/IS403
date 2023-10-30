@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <label>Enter net id:</label>
+    <input type="text" id="netid">
+    <br><br>
+    <label>Enter first name:</label>
+    <input type="text" id="first">
+    <br><br>
+    <label>Enter last name:</label>
+    <input type="text" id="last">
+    <br><br>
+    <button onclick="play();">Create</button>
+    <br><br>
+    <p id="output"></p>
+    <script>
+      class Student
+      {
+        constructor ()
+        {
+          this.netid = '';
+          this.first_name = '';
+          this.last_name = '';
+        }
+      }
+
+      function play()
+      {
+        let oStudent = new Student();
+
+        oStudent.netid = document.getElementById("netid").value;
+        oStudent.first_name = document.getElementById("first").value;
+        oStudent.last_name = document.getElementById("last").value;
+
+        aStudents.push(oStudent);
+
+        document.getElementById("output").innerHTML = aStudents[0].netid;
+
+      }
+
+    </script>
+</body>
+</html>

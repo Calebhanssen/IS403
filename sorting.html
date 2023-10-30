@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    let aBreakfeast = [["spam", 12], ["bacon", 5], ["grits", 2]]
+    let sOutput = "";
+
+    for (let iOuter = 0; iOuter < aBreakfeast.length; iOuter++)
+    { 
+      sOutput += " " + aBreakfeast[iOuter][0] + " " + aBreakfeast[iOuter][1];
+    }
+
+    alert(sOutput)
+
+    sOutput = "";
+    aBreakfeast.forEach(aFood => {
+      sOutput = sOutput + aFood[0] + " " + aFood[1];
+    })
+
+
+  </script>
+</body>
+</html>
