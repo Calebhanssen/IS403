@@ -1,0 +1,62 @@
+<!--
+    Caleb Hanssen
+    Section 5
+    Test 1 (track exactly how many burgers each customer orders and organize this using an array and outputting in different colors)
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Burgers</title>
+</head>
+
+<body>
+    <h1><u>TOTAL BURGERS</u></h1>
+    <p id="myOutput"></p>
+    <br>
+    <br>
+    <button type="button" onclick="showBreakdowns()">Open Store</button>
+
+    <script>
+        function showBreakdowns() {
+            let asCustomers = ["Jefe", "El Guapo", "Lucky Day", "Ned Nederaland", "Dust Bottoms", "Harry Flugleman", "Carmen", "Invisible Swordsman", "Singing Bush"];
+            let aiBurgerCount = []; // Added an array to store burger counts
+            let sOutput = "";
+            let sOutput2 = "";
+            let sOutput3 = "";
+
+            for (let i = 0; i < asCustomers.length; i++) {
+                aiBurgerCount.push(Math.floor(Math.random() * 21 + 1) * 100); // Calculate and store random burger counts
+            }
+
+            // Shuffle the asCustomers array
+            shuffle(asCustomers);
+
+            for (let iCount = 0; iCount < asCustomers.length; iCount++) {
+                if (aiBurgerCount[iCount] >= 1100) {
+                    sOutput += `<span style="color: green">${asCustomers[iCount]} - ${aiBurgerCount[iCount]}</span><br>`;
+                } else if (aiBurgerCount[iCount] >= 1000) {
+                    sOutput2 += `<span style="color: blue">${asCustomers[iCount]} - ${aiBurgerCount[iCount]}</span><br>`;
+                } else if (aiBurgerCount[iCount] >= 900) {
+                    sOutput3 += `<span style="color: DarkGoldenRod">${asCustomers[iCount]} - ${aiBurgerCount[iCount]}</span><br>`;
+                } else {
+                    sOutput3 += `<span style="color: red">${asCustomers[iCount]} - ${aiBurgerCount[iCount]}</span><br>`;
+                }
+            }
+
+            document.getElementById("myOutput").innerHTML = sOutput + sOutput2 + sOutput3;
+        }
+
+        // Function to shuffle an array
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+    </script>
+</body>
+</html>

@@ -38,7 +38,16 @@
     <br>
     <p id="output"></p>
     <script>
-        
+
+        class Course
+        {
+            constructor(number, name)
+            {
+                this.course_num = number;
+                this.course_desc = name;
+            }
+        }
+
         class Person
         {
             constructor(first, last)
@@ -48,15 +57,64 @@
             }
         }
 
-        class Student
+        class Student extends Person
         {
             constructor(id, fname, lname)
             {
+                super(fname, lname)
                 this.netid = id;
-                this.first_name = fname;
-                this.last_name = lname;
+                this.courses = [];
+            }
+        }
+
+         let lstStudents = [];
+
+        function play()
+        {
+            let sID = document.getElementById("netid").value;
+            let sFirst = document.getElementById("first").value;
+            let sLast = document.getElementById("last").value;
+
+            let oStudent = new Student(sID, sFirts, sLast);
+
+            lstStudents.push(oStudent);
+
+            document.getElementById("netid").value = "";
+            document.getElementById("first").value = "";
+            document.getElementById("last").value = "";
+            document.getElementById("netid").focus();
+
+        }
+
+        function addCourse()
+        {
+            if (lstStudents.length > 0)
+            {
+                let sNum = document.getElementById("course_num").value;
+                let sNum = document.getElementById("course_name").value;
+                let oCourse = new Course(sNum, sName);
+
+                lstStudents[lstStudents.length - 1].courses.push(oCourse);   //.length -1 grabs the last element in the array
 
             }
+        }
+
+        function display()
+        {
+            let sOutput = "";
+
+            for (let iCount = 0; iCount < lstStudents.length; iCount++)
+            {
+                sOutput = sOutput + ' ' + lstStudents[iCount].netid + ' ' + lstStudents[iCount].first_name + ' ' + lstStudents[iCount].last_name + '<br>';
+
+                for (let iCourse = 0; iCourse < lstStudents[iCount].courses.length; iCourse++)
+                {
+                    sOutput = sOutput + "<font color='blue" + lstStudents[iCount].courses[iCourse].course_desc + "</font><br>";
+
+                }
+            }
+
+            document.getElementById("output").innerHTML = sOutput;
         }
 
     </script>

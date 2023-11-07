@@ -1,0 +1,137 @@
+<!--
+    Caleb Hanssen, Elaina Halls, Kira Coleman, Kinsee Nyland
+    Section 1
+    Description: This is a program built to take orders and process through them with nested arrays. We then output the results once the button is pressed. -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Data Structures</title>
+    </head>
+    <body>
+        <!--Create a button that calls our dataSlay funciton when clicked.-->
+        <button type="button" onclick="dataSlay();">PLACE ORDER</button>
+        <p id="output"></p>
+        <script>
+            // Order class that has an instance variable assigned to the results from method randomBurgers.
+            class Order
+            {
+                constructor()
+                {
+                    this.burger_count = this.randomBurgers();
+                }
+    
+                // Randomly generates a number of burgers (1 - 20).
+                randomBurgers()
+                {
+                    let burg = Math.floor(Math.random() * 20) + 1;
+                    return burg;
+                }
+            }
+    
+            // Person class that assigns results from method randomName to an instance variable.
+            class Person 
+            {
+                constructor()
+                {
+                    this.customer_name = this.randomName();
+                }
+    
+                // Method that randomly selects and returns a random name from an array of customer names
+                randomName()
+                {
+                    // Array of nine names (customers).
+                    let asCustomers = ["Jefe", "El Guapo", "Lucky Day", "Ned Nederlander", "Dusty Bottoms", "Harry Flugleman", "Carmen", "Invisible Swordsman", "Singing Bush"]
+                    
+                    // Randomly return one of the names from our Customers array.
+                    let iRandomName = Math.floor(Math.random() * 9);
+    
+                    return asCustomers[iRandomName]
+    
+                }
+            }
+    
+            // Customer class inherits from the Person Class and has an instance variable of the Order object
+            class Customer extends Person
+            {
+                constructor()
+                {
+                    super();
+                    this.order = new Order;
+                }
+            }
+    
+            function dataSlay()
+            {
+                // Create a variable for a Queue that will be assigned items of type Customer 
+                let queueCustomers = new Array(100);
+    
+                //Create a variable called CustomerOrders that is an array holding nested array elements. 
+                // Each element has the name of the customer and the total number of burgers in the second position.
+                let customerOrders = [];
+    
+                for (let iCount = 0; iCount < queueCustomers.length; iCount++)
+                {
+                // put 100 customers into the queue
+                    let newCustomer = new Customer()
+                    queueCustomers[iCount] = newCustomer
+                }
+    
+                //while loop that goes through the length of the queueCustomers
+                while (queueCustomers.length > 0)
+                {
+                    //for loop that goes through the length of the customer
+                    let bFound = false
+                    for (let iCount = 0; (iCount < customerOrders.length) && (customerOrders.length > 0); iCount++)
+                    {
+                        if (queueCustomers[0].customer_name == customerOrders[iCount][0])
+                        {
+                            bFound = true;
+                            customerOrders[iCount][1] += queueCustomers[0].order.burger_count;
+                        }
+                    }
+    
+                    if (bFound == false)
+                    {
+                        customerOrders.push([queueCustomers[0].customer_name, queueCustomers[0].order.burger_count]);
+                    }
+                    
+                    queueCustomers.shift();
+                }
+    
+                //Create sort bubble to go through each customers burger count and compare 
+                //to other customers burger count to sort descending
+                let sHoldBurgers;
+                for (let iOuter = 0; iOuter < customerOrders.length - 1; iOuter++)
+                {
+                    for (let iInner = iOuter + 1; iInner < customerOrders.length; iInner++)
+                    {
+                        if (customerOrders[iOuter][1] < customerOrders[iInner][1])
+                        {
+                            sHoldBurgers = customerOrders[iInner];
+    
+                            customerOrders[iInner] = customerOrders[iOuter];
+    
+                            customerOrders[iOuter] = sHoldBurgers;
+                        }
+                    }
+                }
+    
+                let sOutput = "";
+                //loop through customer orders and output info to p tag
+                for (let iCount = 0; iCount < customerOrders.length; iCount++)
+                {
+                    let sNameOut = customerOrders[iCount][0];
+                    let iBurgOut = customerOrders[iCount][1];
+    
+                    //padEnd with space
+                    sOutput += sNameOut.padEnd(50, ' ') + iBurgOut + '<br>';
+                }
+                 
+                //set sOutput to p tag
+                document.getElementById('output').innerHTML = '<pre>' + sOutput + '</pre>';    
+            }   
+        </script>
+    </body>
+    </html>
